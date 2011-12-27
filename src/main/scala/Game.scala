@@ -13,6 +13,7 @@ class Game(word: String, guesses: Set[Char]) {
     spacify(maskedWord) + "    " +
     figures(nWrong) + "    " +
     spacify(wrongGuesses.mkString)
+  def answer: String = spacify(word)
 
   def missingLetters: Set[Char] = word.toSet.diff(guesses)
   def wrongGuesses: Set[Char] = guesses.diff(word.toSet)

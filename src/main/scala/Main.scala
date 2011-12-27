@@ -8,23 +8,27 @@ object Main {
     var game = new Game(word)
     var isOver = false
 
-    do {
+    while (!isOver) {
       println
       println(game)
-      isOver = game.isOver
+
+      print("Next guess (Ctrl-D to quit): ")
+      val ich = Console.in.read
+      isOver = (ich == 4)
+      println
 
       if (!isOver) {
-        print("Next guess (Ctrl-D to quit): ")
-        val ich = Console.in.read
-        isOver = (ich == 4)
-        println
-
         val ch = ich.toChar
         game = game.next(ch)
+        isOver = game.isOver
       }
-    } while (!isOver)
+    } 
 
-    println(if (game.isWin) "Sweet victory!!!" else "Crhusing defeat!!!")
+    println
+    println(game.answer)
+    println
+
+    println(if (game.isWin) "Sweet victory!!!" else "Crushing defeat!!!")
     println
   }
 }
