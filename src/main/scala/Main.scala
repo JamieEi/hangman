@@ -3,19 +3,25 @@ package org.jamieei.hangman
 object Main {
   def main(args: Array[String]) {
     var game = new Game("test")
-    while (!game.isOver) {
-      println(game)
-      print("Next guess (Q to quit): ")
-      
-      val ch = readChar
-      println(ch)
+    var isOver = false
+
+    do {
       println
+      println(game)
+      isOver = game.isOver
 
-      if (ch == 'Q') return
-      game = game.next(ch)
-    }
+      if (!isOver) {
+        print("Next guess (Ctrl-D to quit): ")
+        val ich = Console.in.read
+        isOver = (ich == 4)
+        println
 
-    if (game.isWin) println("Sweet victory!!!")
-    if (game.isLoss) println("Crhusing defeat!!!")
+        val ch = ich.toChar
+        game = game.next(ch)
+      }
+    } while (!isOver)
+
+    println(if (game.isWin) "Sweet victory!!!" else "Crhusing defeat!!!")
+    println
   }
 }
