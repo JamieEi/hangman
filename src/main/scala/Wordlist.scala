@@ -10,7 +10,7 @@ class Wordlist {
 
   def getWord(): String = {
   	val random = new Random
-  	val i = (random.nextInt % words.size)
+  	val i = random.nextInt(words.size)
   	words(i)
   }
 }
