@@ -2,8 +2,8 @@ package org.jamieei.hangman
 
 object Main {
   def main(args: Array[String]) {
-  	val wordlist = new Wordlist
-  	val word = wordlist.getWord
+    val wordlist = new Wordlist
+    val word = wordlist.getWord
 
     var game = new Game(word)
     var isOver = false

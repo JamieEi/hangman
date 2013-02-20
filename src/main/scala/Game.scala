@@ -3,9 +3,9 @@ package org.jamieei.hangman
 import collection.immutable._
 
 class Game(word: String, guesses: Set[Char]) {
-	def this(word: String) = this(word, new TreeSet[Char]())
+  def this(word: String) = this(word, new TreeSet[Char]())
 
-	private val figures = List("", "o", "o-", "oc", "oE", "oE\\", "oE<")
+  private val figures = List("", "o", "o-", "oc", "oE", "oE\\", "oE<")
   private def spacify(str: String): String = str.foldLeft("")((acc, c) => acc + ' ' + c)
 
   def maskedWord(): String = word.map((ch: Char) => if (guesses.contains(ch)) ch else '_')
